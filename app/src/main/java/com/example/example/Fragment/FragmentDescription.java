@@ -1,4 +1,4 @@
-package com.example.example;
+package com.example.example.Fragment;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.example.example.R;
 
 import java.net.URL;
 

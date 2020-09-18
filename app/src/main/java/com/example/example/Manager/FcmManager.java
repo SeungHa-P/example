@@ -1,4 +1,4 @@
-package com.example.example;
+package com.example.example.Manager;
 
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
+import com.example.example.Activity.IntroActivity;
+import com.example.example.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -99,7 +101,6 @@ public class FcmManager extends FirebaseMessagingService {
 
         }
     }
-
 
     private void updateContent(String body,String title){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);

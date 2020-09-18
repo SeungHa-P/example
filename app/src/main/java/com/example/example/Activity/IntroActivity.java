@@ -1,4 +1,4 @@
-package com.example.example;
+package com.example.example.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.example.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class IntroActivity extends AppCompatActivity {
     @Override
@@ -44,6 +46,14 @@ public class IntroActivity extends AppCompatActivity {
                             }
                         },3000);
 
+                    }
+                });
+
+        FirebaseMessaging.getInstance().subscribeToTopic("weather")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                       Log.d("구독","완료");
                     }
                 });
 

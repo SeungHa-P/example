@@ -1,36 +1,35 @@
-package com.example.example;
+package com.example.example.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
+import com.example.example.Manager.FcmManager;
+import com.example.example.R;
+import com.example.example.databinding.ActivityMainBinding;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnload,btnpush,btnweather;
+
+    private ActivityMainBinding binding;
+
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setActivity(this);
+
         Log.d("token", FirebaseInstanceId.getInstance().getInstanceId()+"");
-        btnload=findViewById(R.id.btn_map);
-        btnweather=findViewById(R.id.btn_weather);
-        btnpush=findViewById(R.id.btn_foxi);
-
-//        FcmManager.context=MainActivity.this;
 
 
-        btnload.setOnClickListener(new View.OnClickListener() {
+
+        binding.btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent =new Intent(MainActivity.this,LoadActivity.class);
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnpush.setOnClickListener(new View.OnClickListener() {
+        binding.btnFoxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(MainActivity.this,PushActivity.class);
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnweather.setOnClickListener(new View.OnClickListener() {
+        binding.btnWeather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent= new Intent(MainActivity.this,WeatherActivity.class);
@@ -58,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 
     @Override
     protected void onResume() {

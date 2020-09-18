@@ -1,19 +1,14 @@
-package com.example.example;
-
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+package com.example.example.Fragment.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.PagerAdapter;
 
-import java.util.ArrayList;
+import com.example.example.Fragment.FragementNow;
+import com.example.example.Fragment.FragmentDescription;
+import com.example.example.Fragment.FragmentHumidity;
+import com.example.example.Fragment.FragmentWind;
 
 public class WeatherAdapter extends FragmentStatePagerAdapter {
 

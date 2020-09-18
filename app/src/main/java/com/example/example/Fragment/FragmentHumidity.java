@@ -1,4 +1,4 @@
-package com.example.example;
+package com.example.example.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,20 +10,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class FragementNow extends Fragment {
-    public static String now;
+import com.example.example.R;
 
-    public FragementNow(){
+public class FragmentHumidity extends Fragment {
+
+    public static String txtHumidity;
+    TextView textView;
+    public FragmentHumidity(){
 
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = (View)inflater.inflate(R.layout.fragment_now,container,false);
+        View view = (View) inflater.inflate(R.layout.fragment_humidity,container,false);
 
-        TextView textView = view.findViewById(R.id.nowtxt);
-        textView.setText("현재 온도 : "+now);
+        textView=view.findViewById(R.id.txtHumidity);
+        textView.setText(txtHumidity+"%");
+
+
         return view;
+
     }
 }

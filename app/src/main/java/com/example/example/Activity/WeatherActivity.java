@@ -1,4 +1,4 @@
-package com.example.example;
+package com.example.example.Activity;
 
 
 import androidx.annotation.NonNull;
@@ -14,20 +14,22 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.example.Fragment.FragementNow;
+import com.example.example.Fragment.FragmentDescription;
+import com.example.example.Fragment.FragmentHumidity;
+import com.example.example.Fragment.FragmentWind;
+import com.example.example.R;
+import com.example.example.Fragment.adapter.WeatherAdapter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,13 +40,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.RecursiveTask;
-
-import io.reactivex.plugins.RxJavaPlugins;
-
 
 
 public class WeatherActivity extends AppCompatActivity {
@@ -55,7 +52,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     String iconName = "";
     String nowTemp;
-   String maxTemp;
+    String maxTemp;
     String minTemp;
     String humidity = "";
     String speed = "";

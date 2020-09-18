@@ -1,8 +1,10 @@
-package com.example.example;
+package com.example.example.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.example.R;
 
 public class LoadActivity extends AppCompatActivity {
 
