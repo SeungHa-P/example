@@ -9,7 +9,7 @@
 
         <variable
             name="activity"
-            type="com.example.example.Activity.MainActivity" />
+            type="com.example.example.activity.MainActivity" />
 
     </data>
 
@@ -19,55 +19,58 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Activity.MainActivity">
+        tools:context=".activity.MainActivity"
+        android:background="#ffafb0">
 
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/btn"
-            />
 
 
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:text="날씨"
+            android:background="@drawable/btn_shape"
+            android:textColor="#FFFFFF"
             android:id="@+id/btn_weather"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/btn"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+
             />
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="폭시"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:text="푸쉬"
+            android:textColor="#FFFFFF"
             android:id="@+id/btn_foxi"
+            android:background="@drawable/btn_shape"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/btn"
+
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             />
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:text="지도"
-            app:layout_constraintLeft_toRightOf="@+id/btn"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btn_shape"
+
+
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/btn_map"
             />
+
+
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:text="인터랙션"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/shadow_back"
 
             app:layout_constraintTop_toBottomOf="@+id/btn"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -75,7 +78,26 @@
             app:layout_constraintRight_toRightOf="parent"
             android:id="@+id/btn_inter"
 
+
             />
+
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/btn"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher"
+              />
+
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

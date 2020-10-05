@@ -26,7 +26,7 @@ public class FragmentHumidity extends Fragment {
         View view = (View) inflater.inflate(R.layout.fragment_humidity,container,false);
 
         textView=view.findViewById(R.id.txtHumidity);
-        textView.setText(txtHumidity+"%");
+        textView.setText("습도  :  "+txtHumidity+"%");
 
 
         return view;

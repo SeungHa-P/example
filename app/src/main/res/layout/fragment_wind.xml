@@ -6,8 +6,10 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:src="@drawable/wind"
+        android:src="@drawable/wind2"
         android:layout_weight="1"
+        android:scaleType="fitCenter"
+
 
         />
 
@@ -18,6 +20,7 @@
         android:layout_height="100dp"
         android:text="www"
         android:id="@+id/txtWind"
+        android:textSize="30dp"
         android:textAlignment="center"
         android:gravity="center"
         android:layout_weight="1"

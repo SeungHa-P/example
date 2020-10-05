@@ -8,14 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_weight="1"
-        android:src="@drawable/ggg"
-        android:scaleType="fitXY"
+        android:src="@drawable/unnamed"
+        android:scaleType="fitCenter"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:text="eee"
         android:id="@+id/txtHumidity"
+        android:textSize="30dp"
         android:textAlignment="center"
         android:gravity="center"
         android:layout_weight="1"

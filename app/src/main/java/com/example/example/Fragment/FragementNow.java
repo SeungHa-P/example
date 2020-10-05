@@ -25,7 +25,7 @@ public class FragementNow extends Fragment {
         View view = (View)inflater.inflate(R.layout.fragment_now,container,false);
 
         TextView textView = view.findViewById(R.id.nowtxt);
-        textView.setText("현재 온도 : "+now);
+        textView.setText("현재 온도 : "+now+"º");
         return view;
     }
 }

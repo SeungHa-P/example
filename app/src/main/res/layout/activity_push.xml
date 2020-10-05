@@ -3,7 +3,7 @@
     <data>
         <variable
             name="activity"
-            type="com.example.example.Activity.PushActivity" />
+            type="com.example.example.activity.PushActivity" />
 
     </data>
 
@@ -13,7 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp"
-    tools:context=".Activity.PushActivity">
+    tools:context=".activity.PushActivity">
 
     <TextView
         android:layout_width="match_parent"

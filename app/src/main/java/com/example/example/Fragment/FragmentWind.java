@@ -28,7 +28,7 @@ public class FragmentWind extends Fragment {
         View view = (View) inflater.inflate(R.layout.fragment_wind,container,false);
 
         textView=view.findViewById(R.id.txtWind);
-        textView.setText(txtWind+"m/s");
+        textView.setText("풍속  :  "+txtWind+"m/s");
 
         return view;
     }

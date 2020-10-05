@@ -2,7 +2,7 @@ package com.example.example.Network;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Model {
+public class RModel {
     @SerializedName("to")
     private String token;
 
@@ -10,7 +10,7 @@ public class Model {
     private NotificationModel notification;
 
 
-    public Model(String token,NotificationModel notification){
+    public RModel(String token, NotificationModel notification){
         this.notification = notification;
         this.token = token;
     }
