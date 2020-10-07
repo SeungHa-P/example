@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 
@@ -21,6 +22,7 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -41,9 +43,13 @@ import com.example.example.databinding.ActivityWeatherBinding;
 
 import java.io.IOException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import me.relex.circleindicator.CircleIndicator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,10 +59,15 @@ public class WeatherActivity extends AppCompatActivity {
     private ActivityWeatherBinding binding;
     double longitude;
     double latitude;
+    private final int count=4;
     String apiKEY = "2a0a73b3457fabd61dde1f052cadc36f";
 
 
+    private int autoCount = 4;
+    Timer timer;
 
+    final int DELAY = 500;
+    final int PERIOD = 1500;
 
     private  ViewPager viewPager;
     @Override
@@ -76,13 +87,32 @@ public class WeatherActivity extends AppCompatActivity {
             }
         });
 
-}
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            @Override
+            public void run() {
+                if(autoCount == count*2) {
+                    autoCount = count;
+                }
+                binding.vPager.setCurrentItem(autoCount++, true);
+            }
+        };
+
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, DELAY, PERIOD);
+
+
+    }
 
 
 private void findWeather(){
 
     findGPS();
-
 
     String addr[] = addressGPS().split(" ");
 
@@ -106,8 +136,47 @@ private void findWeather(){
                     binding.txtDown.setText("↓ "+response.body().getWmain().getTempMin()+"º");
                     binding.txtUp.setText("↑ "+response.body().getWmain().getTempMax()+"º");
 
-                    WeatherAdapter weatherAdapter = new WeatherAdapter(getSupportFragmentManager());
+                    WeatherAdapter weatherAdapter = new WeatherAdapter(getSupportFragmentManager(),count);
+
                     binding.vPager.setAdapter(weatherAdapter);
+                    binding.indicator.setViewPager(binding.vPager);
+
+                    binding.vPager.setCurrentItem(count);
+                    binding.indicator.createIndicators(4,0);
+
+
+
+
+                    binding.vPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                        @Override
+                        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                            Log.d("PageScrolled", "아아아    " +position);
+                        }
+
+                        @Override
+                        public void onPageSelected(int position) {
+                            Log.d("PageSelected", "하하하    "+position);
+                            if(position < count){
+                                binding.vPager.setCurrentItem(position + count,false);
+                                autoCount=position;
+
+                            }else if(position >= count*2){
+                                binding.vPager.setCurrentItem(position - count,false);
+                                autoCount=position;
+                            }
+                            autoCount=position;
+                            binding.indicator.animatePageSelected(position%count);
+
+                        }
+
+                        @Override
+                        public void onPageScrollStateChanged(int state) {
+                            Log.d("PageScrollStateChaged", "효효효     "+ state);
+                        }
+                    });
+
+
+
                 }
 
                 @Override
@@ -124,23 +193,23 @@ private void findWeather(){
 //------------------------------OpenWeather API 에서 받아오는 Description 의 문자를 한글로 파싱하기 위한 메소드 ------------------------------------------
 private String transferWeather(String weather){
         weather = weather.toLowerCase();
-        if(weather.equals("haze")){
+        if("haze".equals(weather)){
             return "안개";
-        }else if(weather.equals("fog")){
+        }else if("fog".equals(weather)){
             return "안개";
-        }else  if(weather.equals("clouds")){
+        }else if("clouds".equals(weather)){
             return "구름";
-        }else if (weather.equals("few clouds")){
+        }else if ("few clouds".equals(weather)){
             return "구름 조금";
-        }else if (weather.equals("scattered clouds")){
+        }else if ("scattered clouds".equals(weather)){
             return "구름 많음";
-        }else if (weather.equals("broken clouds")){
+        }else if ("broken clouds".equals(weather)){
             return "구름 많음";
-        }else if (weather.equals("overcast clouds")){
+        }else if ("overcast clouds".equals(weather)){
             return "구름 많음";
-        }else if (weather.equals("clear sky")){
+        }else if ("clear sky".equals(weather)){
             return "맑음";
-        }else if (weather.equals("light rain")){
+        }else if ("light rain".equals(weather)){
             return "비";
         }
 

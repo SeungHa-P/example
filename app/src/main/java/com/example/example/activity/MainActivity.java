@@ -189,6 +189,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             ) {
                 if (!pushFlag) {
                     binding.btnFoxi.startAnimation(pushBounce);
+
                 }
             }
 //-------------------------------오른쪽 버튼으로 이동시 ---------------------------------------------------------------------------
