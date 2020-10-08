@@ -76,7 +76,7 @@ public class FcmManager extends FirebaseMessagingService {
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-//-----------------------앱이 백그라운드 일때 다이얼로그 로 PUSH 알림 ----------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------앱이 포그라운드 일때 다이얼로그 로 PUSH 알림 ----------------------------------------------------------------------------------------------------------------------------------------
         } else if (remoteMessage.getNotification() != null) {
             final String messageBody = remoteMessage.getNotification().getBody();
             final String messageTitle = remoteMessage.getNotification().getTitle();
@@ -99,6 +99,7 @@ public class FcmManager extends FirebaseMessagingService {
                 }
             });
             dialog = alertDialog.create();
+
             dialog.show();
 
                 }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -56,7 +57,8 @@ public class PushActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 try {
-
+                    binding.pushBtn.setBackgroundColor(Color.GRAY);
+                    binding.pushBtn.setEnabled(false);
                     sendNotificationToUser();
 
                 }catch (Exception e)
@@ -81,6 +83,8 @@ public class PushActivity extends AppCompatActivity{
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 Toast.makeText(PushActivity.this,"성공",Toast.LENGTH_LONG).show();
+                binding.pushBtn.setBackgroundResource(R.color.colorAccent);
+                binding.pushBtn.setEnabled(true);
             }
 
             @Override

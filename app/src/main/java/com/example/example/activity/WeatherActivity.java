@@ -273,7 +273,19 @@ private String transferWeather(String weather){
         return true;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
 
     }
+
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+}
 
 
